@@ -1,4 +1,4 @@
-# RsHicReader
+# RsHidReader
 
 C# library for reading Serbian health insurance cards via smart card readers.  
 Reads personal data, address, document info, and insurance details from the chip.
@@ -44,24 +44,24 @@ Add it to your project the same way as any other reference.
 
 ## Installation
 
-Copy `RsHicReader.cs` (`RsHicReaderLib` namespace) into your project.
+Copy `RsHidReader.cs` (`RsHidReaderLib` namespace) into your project.
 
 ---
 
 ## Usage
 
 ```csharp
-using RsHicReaderLib;
+using RsHidReaderLib;
 
 // Check reader and card status
-if (!RsHicReader.HasReader())
+if (!RsHidReader.HasReader())
 {
     MessageBox.Show("Please connect a card reader to a USB port.", "Reader Not Found",
         MessageBoxButtons.OK, MessageBoxIcon.Warning);
     return;
 }
 
-if (!RsHicReader.HasCard())
+if (!RsHidReader.HasCard())
 {
     MessageBox.Show("Please insert your health card into the reader.", "No Card Detected",
         MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -71,7 +71,7 @@ if (!RsHicReader.HasCard())
 // Read the card (async – does not block the UI)
 try
 {
-    RsHicData card = await RsHicReader.ReadAsync();
+    RsHicData card = await RsHidReader.ReadAsync();
 
     txtName.Text      = card.FirstName;
     txtSurname.Text   = card.LastName;
@@ -170,18 +170,18 @@ Direct access to original nstwcsLib objects for any fields not mapped above.
 
 ```csharp
 // Static – no instance required
-RsHicReader.HasReader()      // bool – checks if a reader is connected
-RsHicReader.HasCard()        // bool – checks if a card is inserted
-RsHicReader.ReadAsync()      // Task<RsHicData> – reads all card data
+RsHidReader.HasReader()      // bool – checks if a reader is connected
+RsHidReader.HasCard()        // bool – checks if a card is inserted
+RsHidReader.ReadAsync()      // Task<RsHicData> – reads all card data
 
 // Instance usage
-using (var reader = new RsHicReader())
+using (var reader = new RsHidReader())
 {
     RsHicData card = reader.Read();
 }
 
 // Reset reader after an error
-using (var reader = new RsHicReader())
+using (var reader = new RsHidReader())
     reader.Reset();
 ```
 
