@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using RsHicReaderLib;
+using RSHidReaderLib;
 
 namespace RsHicConsole
 {
@@ -34,47 +34,69 @@ namespace RsHicConsole
                 Console.WriteLine("══════════════════════════════════");
                 Console.WriteLine("  PERSONAL DATA");
                 Console.WriteLine("══════════════════════════════════");
-                Console.WriteLine($"Full name        : {card.FullName}");
-                Console.WriteLine($"First name       : {card.FirstName}");
-                Console.WriteLine($"Last name        : {card.LastName}");
-                Console.WriteLine($"Parent name      : {card.ParentName}");
-                Console.WriteLine($"Sex              : {card.Sex}");
-                Console.WriteLine($"Personal number  : {card.PersonalNumber}");
-                Console.WriteLine($"Date of birth    : {card.DateOfBirthFormatted}");
+                Console.WriteLine($"Full name          : {card.FullName}");
+                Console.WriteLine($"First name         : {card.FirstName}");
+                Console.WriteLine($"Last name          : {card.LastName}");
+                Console.WriteLine($"Parent name        : {card.ParentName}");
+                Console.WriteLine($"Gender             : {card.GenderLabel}");
+                Console.WriteLine($"Personal number    : {card.PersonalNumber}");
+                Console.WriteLine($"Insurant number    : {card.InsurantNumber}");
+                Console.WriteLine($"Date of birth      : {card.DateOfBirthFormatted}");
 
                 Console.WriteLine();
                 Console.WriteLine("══════════════════════════════════");
                 Console.WriteLine("  ADDRESS");
                 Console.WriteLine("══════════════════════════════════");
-                Console.WriteLine($"Street           : {card.Street} {card.HouseNumber}{card.HouseLetter}");
-                Console.WriteLine($"Entrance / Floor : {card.Floor}");
-                Console.WriteLine($"Apartment        : {card.ApartmentNumber}");
-                Console.WriteLine($"City             : {card.City}");
-                Console.WriteLine($"Municipality     : {card.Municipality}");
-                Console.WriteLine($"Country          : {card.Country}");
-                Console.WriteLine($"Full address     : {card.FullAddress}");
+                Console.WriteLine($"Street             : {card.Street} {card.HouseNumber}");
+                Console.WriteLine($"Entrance / Apt     : {card.Entrance} / {card.Apartment}");
+                Console.WriteLine($"Post number        : {card.PostNumber}");
+                Console.WriteLine($"City               : {card.City}");
+                Console.WriteLine($"Municipality       : {card.Municipality}");
+                Console.WriteLine($"Country            : {card.Country} ({card.CountryCode})");
 
                 Console.WriteLine();
                 Console.WriteLine("══════════════════════════════════");
                 Console.WriteLine("  DOCUMENT");
                 Console.WriteLine("══════════════════════════════════");
-                Console.WriteLine($"Card number      : {card.CardNumber}");
-                Console.WriteLine($"Issued           : {card.IssuedDateFormatted}");
-                Console.WriteLine($"Expires          : {card.ExpiryDateFormatted}");
-                Console.WriteLine($"Issuing authority: {card.IssuingAuthority}");
+                Console.WriteLine($"Card ID            : {card.CardID}");
+                Console.WriteLine($"Insurer name       : {card.InsurerName}");
+                Console.WriteLine($"Insurer ID         : {card.InsurerID}");
+                Console.WriteLine($"Date of issue      : {card.DateOfIssueFormatted}");
+                Console.WriteLine($"Date of expiry     : {card.DateOfExpiryFormatted}");
+                Console.WriteLine($"Chip serial        : {card.ChipSerialNumber}");
+                Console.WriteLine($"Permanent          : {card.IsPermanent}");
 
                 Console.WriteLine();
                 Console.WriteLine("══════════════════════════════════");
                 Console.WriteLine("  INSURANCE");
                 Console.WriteLine("══════════════════════════════════");
-                Console.WriteLine($"Insurance basis  : {card.InsuranceBasis}");
-                Console.WriteLine($"Employer         : {card.EmployerName}");
-                Console.WriteLine($"Employer address : {card.EmployerAddress}");
-                Console.WriteLine($"Employer ID      : {card.EmployerIdNumber}");
-                Console.WriteLine($"Obligee name     : {card.ObligeeName}");
-                Console.WriteLine($"Obligee ID       : {card.ObligeeIdNumber}");
-                Console.WriteLine($"Insurance from   : {card.InsuranceStartFormatted}");
-                Console.WriteLine($"Insurance to     : {card.InsuranceEndFormatted}");
+                Console.WriteLine($"Insurance basis    : {card.InsuranceBasis}");
+                Console.WriteLine($"Basis code         : {card.InsuranceBasisCode}");
+                Console.WriteLine($"Insured from       : {card.InsuredFromFormatted}");
+                Console.WriteLine($"RZZO reg. number   : {card.RZZORegistrationNumber}");
+                Console.WriteLine($"Insurer branch     : {card.InsurerBranch}");
+                Console.WriteLine($"Insurer office     : {card.InsurerOffice}");
+                Console.WriteLine($"Booklet issuer code: {card.BookletIssuerCode}");
+                Console.WriteLine($"Participation free : {card.ParticipationFreeBecause}");
+
+                Console.WriteLine();
+                Console.WriteLine("══════════════════════════════════");
+                Console.WriteLine("  CARRIER");
+                Console.WriteLine("══════════════════════════════════");
+                Console.WriteLine($"Carrier name       : {card.CarrierFirstName} {card.CarrierLastName}");
+                Console.WriteLine($"Carrier relation   : {card.CarrierRelationship}");
+                Console.WriteLine($"Carrier ID         : {card.CarrierIdNumber}");
+                Console.WriteLine($"Carrier insurant   : {card.CarrierInsurantNumber}");
+
+                Console.WriteLine();
+                Console.WriteLine("══════════════════════════════════");
+                Console.WriteLine("  TAXPAYER");
+                Console.WriteLine("══════════════════════════════════");
+                Console.WriteLine($"Taxpayer name      : {card.TaxpayerName}");
+                Console.WriteLine($"Taxpayer residence : {card.TaxpayerResidence}");
+                Console.WriteLine($"Taxpayer number    : {card.TaxpayerNumber}");
+                Console.WriteLine($"Taxpayer ID        : {card.TaxpayerIdNumber}");
+                Console.WriteLine($"Activity code      : {card.TaxpayerActivityCode}");
             }
             catch (CardNotFoundException ex)
             {
